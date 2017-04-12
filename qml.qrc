@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>keyboard/backspace.svg</file>
+        <file>keyboard/BackspaceKey.qml</file>
+        <file>keyboard/enter.svg</file>
+        <file>keyboard/EnterKey.qml</file>
+        <file>keyboard/hide-keyboard.svg</file>
+        <file>keyboard/HideKeyboardKey.qml</file>
+        <file>keyboard/Keyboard.qml</file>
+        <file>keyboard/KeyboardDataModels.qml</file>
+        <file>keyboard/KeyboardKey.qml</file>
+        <file>keyboard/LanguageKey.qml</file>
+        <file>keyboard/MoreKey.qml</file>
+        <file>keyboard/MyTab.qml</file>
+        <file>keyboard/ShiftKey.qml</file>
+        <file>main.cpp</file>
+    </qresource>
+</RCC>
