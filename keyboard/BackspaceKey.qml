@@ -1,13 +1,12 @@
-import QtQuick 2.0
+import QtQuick 2.5
 import QtQuick.Layouts 1.1
 
 KeyboardKey {
-    id: backspaceKey
-    signal backspace
+    id: backspaceKey    
 
     Layout.preferredWidth: height * 1.5
     Layout.fillWidth: true
-    color: pressed ? "#4c4c4c" : "#263138"
+    color: down ? "#4c4c4c" : "#263138"
 
     Image {
         width: backspaceKey.width * 0.50
@@ -19,11 +18,11 @@ KeyboardKey {
 
     Timer {
         id: timer
-        interval: 150
+        interval: 200
         repeat: true
-        running: backspaceKey.pressed
-        onTriggered: backspaceKey.backspace();
-    }
-
-    onClicked: backspaceKey.backspace();
+        running: down
+        onTriggered: {
+            backspaceKey.pressed();
+        }
+    }   
 }

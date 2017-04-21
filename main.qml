@@ -1,4 +1,4 @@
-import QtQuick 2.4
+import QtQuick 2.5
 import QtQuick.Window 2.2
 import "keyboard"
 
@@ -7,13 +7,6 @@ Window {
     width: 640
     height: 480
     title: qsTr("Hello World")
-
-    MouseArea {
-        anchors.fill: parent
-        onClicked: {
-            console.log(qsTr('Clicked on background. Text: "' + textEdit.text + '"'))
-        }
-    }
 
     TextEdit {
         id: textEdit
@@ -32,11 +25,11 @@ Window {
 
     TextInput {
         text: "Hello"
-        anchors.top: textEdit.bottom
+        anchors { top: textEdit.bottom; topMargin: 20; horizontalCenter: parent.horizontalCenter }
     }
 
     Keyboard {
-        width: 500
+        width: parent.width
         inputField: textEdit
         y: activated ? parent.height - height : parent.height
     }

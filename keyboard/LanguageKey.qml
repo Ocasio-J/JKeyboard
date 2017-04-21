@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.5
 
 KeyboardKey {
     id: languageKey
@@ -9,6 +9,6 @@ KeyboardKey {
         height: width
         anchors { centerIn: parent }
         fillMode: Image.PreserveAspectFit
-        source: "../images/Keyboard/language.svg"
+        source: "language.svg"
     }
 }

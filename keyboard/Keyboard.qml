@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.5
 import QtQuick.Layouts 1.1
 
 Rectangle {
@@ -6,7 +6,8 @@ Rectangle {
 
     property var inputField
     property bool activated: inputField.activeFocus
-    property bool showSecondaryKeys: false    
+    property bool showSecondaryKeys: false
+    property bool shiftActive: false
 
     color: "black"
     height: width * 0.30
@@ -55,10 +56,10 @@ Rectangle {
                 model: datamodel.row1
                 delegate: KeyboardKey {
                     key: keyboard.showSecondaryKeys ? secondaryCharacter : primaryCharacter
-                    onClicked: insert(key)
+                    onPressed: insert(key)
                 }
             }
-            BackspaceKey { onBackspace: remove() }
+            BackspaceKey { onPressed: remove() }
         }
 
         RowLayout {
@@ -72,10 +73,10 @@ Rectangle {
                 model: datamodel.row2
                 delegate: KeyboardKey {
                     key: keyboard.showSecondaryKeys ? secondaryCharacter : primaryCharacter
-                    onClicked: insert(key)
+                    onPressed: insert(key)
                 }
             }
-            EnterKey { onClicked: insert("\x0D") }
+            EnterKey { onPressed: insert("\x0D") }
         }
 
         RowLayout {
@@ -84,12 +85,12 @@ Rectangle {
             anchors { left: container.left ; right: container.right }
             spacing: container.spacing
 
-            ShiftKey { key: "SHIFT" }
+            ShiftKey { id: shift; key: "SHIFT" }
             Repeater {
                 model: datamodel.row3
                 delegate: KeyboardKey {
                     key: keyboard.showSecondaryKeys ? secondaryCharacter : primaryCharacter
-                    onClicked: insert(key)
+                    onPressed: insert(key)
                 }
             }
         }
@@ -100,12 +101,12 @@ Rectangle {
             anchors { left: container.left ; right: container.right }
             spacing: container.spacing
 
-            MoreKey { key: "123?"; onClicked: keyboard.showSecondaryKeys = !keyboard.showSecondaryKeys }
+            MoreKey { key: "123?"; onPressed: keyboard.showSecondaryKeys = !keyboard.showSecondaryKeys }
             //LanguageKey {  }
-            KeyboardKey { key: " "; Layout.fillWidth: true; onClicked: insert(key) }
-            KeyboardKey { key: "←"; onClicked: moveRight() }
-            KeyboardKey { key: "→"; onClicked: moveLeft() }
-            HideKeyboardKey { onClicked: hide() }
+            KeyboardKey { key: " "; Layout.fillWidth: true; onPressed: insert(key) }
+            KeyboardKey { key: "←"; onPressed: moveRight() }
+            KeyboardKey { key: "→"; onPressed: moveLeft() }
+            HideKeyboardKey { onPressed: hide() }
         }
     }
 }
