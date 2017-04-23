@@ -40,6 +40,14 @@ Rectangle {
     MouseArea { id: dummy; anchors.fill: parent }
     KeyboardDataModels { id: datamodel }
 
+    Component {
+        id: keyDelegate
+        KeyboardKey {
+            key: keyboard.showSecondaryKeys ? secondaryKey : shiftActive ? primaryKey : primaryKey.toLowerCase()
+            onPressed: insert(key)
+        }
+    }
+
     Column {
         id: container
         anchors { fill: parent }
@@ -54,10 +62,7 @@ Rectangle {
 
             Repeater {
                 model: datamodel.row1
-                delegate: KeyboardKey {
-                    key: keyboard.showSecondaryKeys ? secondaryCharacter : primaryCharacter
-                    onPressed: insert(key)
-                }
+                delegate: keyDelegate
             }
             BackspaceKey { onPressed: remove() }
         }
@@ -71,10 +76,7 @@ Rectangle {
 
             Repeater {
                 model: datamodel.row2
-                delegate: KeyboardKey {
-                    key: keyboard.showSecondaryKeys ? secondaryCharacter : primaryCharacter
-                    onPressed: insert(key)
-                }
+                delegate: keyDelegate
             }
             EnterKey { onPressed: insert("\x0D") }
         }
@@ -85,13 +87,10 @@ Rectangle {
             anchors { left: container.left ; right: container.right }
             spacing: container.spacing
 
-            ShiftKey { id: shift; key: "SHIFT" }
+            ShiftKey { id: shift }
             Repeater {
                 model: datamodel.row3
-                delegate: KeyboardKey {
-                    key: keyboard.showSecondaryKeys ? secondaryCharacter : primaryCharacter
-                    onPressed: insert(key)
-                }
+                delegate: keyDelegate
             }
         }
 

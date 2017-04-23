@@ -28,7 +28,7 @@ Rectangle {
         anchors { centerIn: parent }
         font { pixelSize: 25; bold: true }
         color: "white"
-        text: shiftActive ? key.key : key.key.toLowerCase()
+        text: key.key
     }   
 }
 

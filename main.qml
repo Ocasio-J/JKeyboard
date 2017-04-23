@@ -33,5 +33,4 @@ Window {
         inputField: textEdit
         y: activated ? parent.height - height : parent.height
     }
-
 }

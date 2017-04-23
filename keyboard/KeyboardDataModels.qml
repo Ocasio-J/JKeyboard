@@ -7,42 +7,42 @@ Item {
 
     ListModel {
         id: row1Model
-        ListElement { primaryCharacter: "Q"; secondaryCharacter: "1"  }
-        ListElement { primaryCharacter: "W"; secondaryCharacter: "2"  }
-        ListElement { primaryCharacter: "E"; secondaryCharacter: "3"  }
-        ListElement { primaryCharacter: "R"; secondaryCharacter: "4"  }
-        ListElement { primaryCharacter: "T"; secondaryCharacter: "5"  }
-        ListElement { primaryCharacter: "Y"; secondaryCharacter: "6"  }
-        ListElement { primaryCharacter: "U"; secondaryCharacter: "7"  }
-        ListElement { primaryCharacter: "I"; secondaryCharacter: "8"  }
-        ListElement { primaryCharacter: "O"; secondaryCharacter: "9"  }
-        ListElement { primaryCharacter: "P"; secondaryCharacter: "0"  }
+        ListElement { primaryKey: "Q"; secondaryKey: "1"  }
+        ListElement { primaryKey: "W"; secondaryKey: "2"  }
+        ListElement { primaryKey: "E"; secondaryKey: "3"  }
+        ListElement { primaryKey: "R"; secondaryKey: "4"  }
+        ListElement { primaryKey: "T"; secondaryKey: "5"  }
+        ListElement { primaryKey: "Y"; secondaryKey: "6"  }
+        ListElement { primaryKey: "U"; secondaryKey: "7"  }
+        ListElement { primaryKey: "I"; secondaryKey: "8"  }
+        ListElement { primaryKey: "O"; secondaryKey: "9"  }
+        ListElement { primaryKey: "P"; secondaryKey: "0"  }
     }
 
     ListModel {
         id: row2Model
-        ListElement { primaryCharacter: "A"; secondaryCharacter: "!"  }
-        ListElement { primaryCharacter: "S"; secondaryCharacter: "@"  }
-        ListElement { primaryCharacter: "D"; secondaryCharacter: "#"  }
-        ListElement { primaryCharacter: "F"; secondaryCharacter: "$"  }
-        ListElement { primaryCharacter: "G"; secondaryCharacter: "%"  }
-        ListElement { primaryCharacter: "H"; secondaryCharacter: "&"  }
-        ListElement { primaryCharacter: "J"; secondaryCharacter: "*"  }
-        ListElement { primaryCharacter: "K"; secondaryCharacter: "?"  }
-        ListElement { primaryCharacter: "L"; secondaryCharacter: "/"  }
+        ListElement { primaryKey: "A"; secondaryKey: "!"  }
+        ListElement { primaryKey: "S"; secondaryKey: "@"  }
+        ListElement { primaryKey: "D"; secondaryKey: "#"  }
+        ListElement { primaryKey: "F"; secondaryKey: "$"  }
+        ListElement { primaryKey: "G"; secondaryKey: "%"  }
+        ListElement { primaryKey: "H"; secondaryKey: "&"  }
+        ListElement { primaryKey: "J"; secondaryKey: "*"  }
+        ListElement { primaryKey: "K"; secondaryKey: "?"  }
+        ListElement { primaryKey: "L"; secondaryKey: "/"  }
     }
 
     ListModel {
         id: row3Model
-        ListElement { primaryCharacter: "Z"; secondaryCharacter: "_"  }
-        ListElement { primaryCharacter: "X"; secondaryCharacter: "\""  }
-        ListElement { primaryCharacter: "C"; secondaryCharacter: "("  }
-        ListElement { primaryCharacter: "V"; secondaryCharacter: ")"  }
-        ListElement { primaryCharacter: "B"; secondaryCharacter: "-"  }
-        ListElement { primaryCharacter: "N"; secondaryCharacter: "+"  }
-        ListElement { primaryCharacter: "M"; secondaryCharacter: ";"  }
-        ListElement { primaryCharacter: ","; secondaryCharacter: ","  }
-        ListElement { primaryCharacter: "."; secondaryCharacter: "."  }
-        ListElement { primaryCharacter: "'"; secondaryCharacter: "'"  }
+        ListElement { primaryKey: "Z"; secondaryKey: "_"  }
+        ListElement { primaryKey: "X"; secondaryKey: "\""  }
+        ListElement { primaryKey: "C"; secondaryKey: "("  }
+        ListElement { primaryKey: "V"; secondaryKey: ")"  }
+        ListElement { primaryKey: "B"; secondaryKey: "-"  }
+        ListElement { primaryKey: "N"; secondaryKey: "+"  }
+        ListElement { primaryKey: "M"; secondaryKey: ";"  }
+        ListElement { primaryKey: ","; secondaryKey: ","  }
+        ListElement { primaryKey: "."; secondaryKey: "."  }
+        ListElement { primaryKey: "'"; secondaryKey: "'"  }
     }
 }
