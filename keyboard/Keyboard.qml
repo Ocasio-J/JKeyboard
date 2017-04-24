@@ -65,7 +65,7 @@ Rectangle {
                 model: dataModel.row1
                 delegate: keyDelegate
             }
-            BackspaceKey { onPressed: remove() }
+            BackspaceKey { repeatOnHold: true; onPressed: remove() }
         }
 
         RowLayout {
@@ -104,8 +104,8 @@ Rectangle {
             MoreKey { key: "123?"; onPressed: keyboard.showSecondaryKeys = !keyboard.showSecondaryKeys }
             //LanguageKey {  }
             KeyboardKey { key: " "; Layout.fillWidth: true; onPressed: insert(key) }
-            KeyboardKey { key: "←"; onPressed: moveRight() }
-            KeyboardKey { key: "→"; onPressed: moveLeft() }
+            KeyboardKey { key: "←"; repeatOnHold: true; onPressed: moveRight() }
+            KeyboardKey { key: "→"; repeatOnHold: true; onPressed: moveLeft() }
             HideKeyboardKey { onPressed: hide() }
         }
     }
