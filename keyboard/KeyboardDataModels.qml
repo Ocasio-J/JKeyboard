@@ -1,12 +1,7 @@
 import QtQuick 2.5
 
-Item {
-    property alias row1: row1Model
-    property alias row2: row2Model
-    property alias row3: row3Model
-
-    ListModel {
-        id: row1Model
+QtObject {
+    readonly property ListModel row1: ListModel {
         ListElement { primaryKey: "Q"; secondaryKey: "1"  }
         ListElement { primaryKey: "W"; secondaryKey: "2"  }
         ListElement { primaryKey: "E"; secondaryKey: "3"  }
@@ -19,8 +14,7 @@ Item {
         ListElement { primaryKey: "P"; secondaryKey: "0"  }
     }
 
-    ListModel {
-        id: row2Model
+    readonly property ListModel row2: ListModel {
         ListElement { primaryKey: "A"; secondaryKey: "!"  }
         ListElement { primaryKey: "S"; secondaryKey: "@"  }
         ListElement { primaryKey: "D"; secondaryKey: "#"  }
@@ -32,8 +26,7 @@ Item {
         ListElement { primaryKey: "L"; secondaryKey: "/"  }
     }
 
-    ListModel {
-        id: row3Model
+    readonly property ListModel row3: ListModel {
         ListElement { primaryKey: "Z"; secondaryKey: "_"  }
         ListElement { primaryKey: "X"; secondaryKey: "\""  }
         ListElement { primaryKey: "C"; secondaryKey: "("  }

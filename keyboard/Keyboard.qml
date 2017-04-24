@@ -8,6 +8,7 @@ Rectangle {
     property bool activated: inputField.activeFocus
     property bool showSecondaryKeys: false
     property bool shiftActive: false
+    property bool capslock: false
 
     color: "black"
     height: width * 0.30
@@ -38,13 +39,13 @@ Rectangle {
     }
 
     MouseArea { id: dummy; anchors.fill: parent }
-    KeyboardDataModels { id: datamodel }
+    KeyboardDataModels { id: dataModel }
 
     Component {
         id: keyDelegate
         KeyboardKey {
-            key: keyboard.showSecondaryKeys ? secondaryKey : shiftActive ? primaryKey : primaryKey.toLowerCase()
-            onPressed: insert(key)
+            key: keyboard.showSecondaryKeys ? secondaryKey : shiftActive || capslock ? primaryKey : primaryKey.toLowerCase()
+            onPressed: { insert(key); shiftActive = false }
         }
     }
 
@@ -61,7 +62,7 @@ Rectangle {
             spacing: container.spacing
 
             Repeater {
-                model: datamodel.row1
+                model: dataModel.row1
                 delegate: keyDelegate
             }
             BackspaceKey { onPressed: remove() }
@@ -75,7 +76,7 @@ Rectangle {
             spacing: container.spacing
 
             Repeater {
-                model: datamodel.row2
+                model: dataModel.row2
                 delegate: keyDelegate
             }
             EnterKey { onPressed: insert("\x0D") }
@@ -89,7 +90,7 @@ Rectangle {
 
             ShiftKey { id: shift }
             Repeater {
-                model: datamodel.row3
+                model: dataModel.row3
                 delegate: keyDelegate
             }
         }
