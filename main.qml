@@ -15,6 +15,7 @@ Window {
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.topMargin: 20
+
         Rectangle {
             anchors.fill: parent
             anchors.margins: -10
@@ -30,7 +31,6 @@ Window {
 
     Keyboard {
         width: parent.width
-        inputField: textEdit
         y: activated ? parent.height - height : parent.height
     }
 }

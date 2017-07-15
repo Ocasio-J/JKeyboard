@@ -4,41 +4,43 @@ import QtQuick.Layouts 1.1
 Rectangle {
     id: keyboard
 
-    property var inputField
-    property bool activated: inputField.activeFocus
+    property Item inputField: activeFocusItem ? (activeFocusItem.cursorVisible ? activeFocusItem : null) : null
+    property bool activated: inputField ? inputField.activeFocus : false
     property bool showSecondaryKeys: false
     property bool shiftActive: false
     property bool capslock: false
 
+    function insert(key) {
+        inputField.insert(inputField.cursorPosition, key)
+    }
+
+    function remove() {
+        inputField.remove(inputField.cursorPosition, inputField.cursorPosition - 1)
+    }
+
+    function moveRight() {
+        inputField.cursorPosition -= 1
+    }
+
+    function moveLeft() {
+        inputField.cursorPosition += 1
+    }
+
+    function hide() {
+        forceActiveFocus()
+    }
+
+    enabled: activated
     color: "black"
     height: width * 0.30
     anchors { horizontalCenter: parent.horizontalCenter }
 
-    function test(ip) {
-        keyboard.inputField = ip
+    Binding on inputField {
+        when: inputField !== null
+        value: activeFocusItem.cursorVisible ? activeFocusItem : null
     }
 
-    function insert(key) {
-        keyboard.inputField.insert(keyboard.inputField.cursorPosition, key)
-    }
-
-    function remove() {
-        keyboard.inputField.remove(keyboard.inputField.cursorPosition, keyboard.inputField.cursorPosition - 1)
-    }
-
-    function moveRight() {
-        keyboard.inputField.cursorPosition -= 1
-    }
-
-    function moveLeft() {
-        keyboard.inputField.cursorPosition += 1
-    }
-
-    function hide() {
-        keyboard.forceActiveFocus()
-    }
-
-    MouseArea { id: dummy; anchors.fill: parent }
+    MouseArea { id: dummyMA; anchors.fill: parent }
     KeyboardDataModels { id: dataModel }
 
     Component {
