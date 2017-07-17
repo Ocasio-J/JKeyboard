@@ -8,6 +8,11 @@ Window {
     height: 480
     title: qsTr("Hello World")
 
+    MouseArea {
+        anchors.fill: parent
+        onClicked: forceActiveFocus()
+    }
+
     TextEdit {
         id: textEdit
         text: qsTr("Enter some text...")

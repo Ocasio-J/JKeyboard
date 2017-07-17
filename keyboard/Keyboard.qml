@@ -5,10 +5,12 @@ Rectangle {
     id: keyboard
 
     property Item inputField: activeFocusItem ? (activeFocusItem.cursorVisible ? activeFocusItem : null) : null
-    property bool activated: inputField ? inputField.activeFocus : false
+    property bool activated: false
     property bool showSecondaryKeys: false
     property bool shiftActive: false
     property bool capslock: false
+
+    onInputFieldChanged: activated = inputField
 
     function insert(key) {
         inputField.insert(inputField.cursorPosition, key)
@@ -27,6 +29,7 @@ Rectangle {
     }
 
     function hide() {
+        activated = false
         forceActiveFocus()
     }
 
@@ -34,11 +37,6 @@ Rectangle {
     color: "black"
     height: width * 0.30
     anchors { horizontalCenter: parent.horizontalCenter }
-
-    Binding on inputField {
-        when: inputField !== null
-        value: activeFocusItem.cursorVisible ? activeFocusItem : null
-    }
 
     MouseArea { id: dummyMA; anchors.fill: parent }
     KeyboardDataModels { id: dataModel }
