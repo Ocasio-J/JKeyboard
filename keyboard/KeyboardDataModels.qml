@@ -1,4 +1,4 @@
-import QtQuick 2.5
+import QtQuick 2.4
 
 QtObject {
     readonly property ListModel row1: ListModel {
