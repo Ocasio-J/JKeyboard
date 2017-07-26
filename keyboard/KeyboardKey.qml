@@ -9,6 +9,7 @@ Rectangle {
     property bool repeatOnHold: false
 
     signal pressed()
+    signal pressedAndHeld()
 
     Layout.preferredHeight: parent.height
     Layout.preferredWidth: height * 1.30
@@ -24,11 +25,15 @@ Rectangle {
     Timer {
         id: timer
         interval: 600
-        repeat: true
-        running: down && repeatOnHold
+        repeat: repeatOnHold
+        running: down
         onTriggered: {
-            pressed();
-            interval = 50
+            if (repeatOnHold) {
+                pressed();
+                interval = 50
+            } else {
+                pressedAndHeld()
+            }
         }
     }
 

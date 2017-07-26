@@ -33,6 +33,10 @@ Rectangle {
         forceActiveFocus()
     }
 
+    function drawLetterPopupContainer() {
+
+    }
+
     enabled: activated
     color: "black"
     height: width * 0.30
@@ -46,6 +50,11 @@ Rectangle {
         KeyboardKey {
             key: keyboard.showSecondaryKeys ? secondaryKey : shiftActive || capslock ? primaryKey : primaryKey.toLowerCase()
             onPressed: { insert(key); shiftActive = false }
+            onPressedAndHeld: {
+                if (extraKeys) {
+                    var array = extraKeys.split(',')
+                }
+            }
         }
     }
 

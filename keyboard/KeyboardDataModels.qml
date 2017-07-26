@@ -8,7 +8,7 @@ QtObject {
         ListElement { primaryKey: "R"; secondaryKey: "4"  }
         ListElement { primaryKey: "T"; secondaryKey: "5"  }
         ListElement { primaryKey: "Y"; secondaryKey: "6"  }
-        ListElement { primaryKey: "U"; secondaryKey: "7"  }
+        ListElement { primaryKey: "U"; secondaryKey: "7"; extraKeys: "Ú,Ù,Ü,Û,U" }
         ListElement { primaryKey: "I"; secondaryKey: "8"  }
         ListElement { primaryKey: "O"; secondaryKey: "9"  }
         ListElement { primaryKey: "P"; secondaryKey: "0"  }
