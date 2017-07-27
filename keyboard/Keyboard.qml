@@ -33,8 +33,10 @@ Rectangle {
         forceActiveFocus()
     }
 
-    function drawLetterPopupContainer() {
-
+    function drawExtraKeysPopupContainer(keyRect) {
+        var ctx = extraKeysPopupCanvas.getContext("2d")
+        ctx.lineWidth = 1
+        ctx.beginPath()
     }
 
     enabled: activated
@@ -43,7 +45,14 @@ Rectangle {
     anchors { horizontalCenter: parent.horizontalCenter }
 
     MouseArea { id: dummyMA; anchors.fill: parent }
+
     KeyboardDataModels { id: dataModel }
+
+    Canvas {
+        id: extraKeysPopupCanvas
+        width: keyboard.width * 0.80
+        height: row1.height * 2
+    }
 
     Component {
         id: keyDelegate
@@ -52,7 +61,10 @@ Rectangle {
             onPressed: { insert(key); shiftActive = false }
             onPressedAndHeld: {
                 if (extraKeys) {
-                    var array = extraKeys.split(',')
+                    var mappedOrigin = mapToItem(keyboard, x, y)
+                    var rect = Qt.rect(mappedOrigin.x, mappedOrigin.y, width, height)
+                    drawExtraKeysPopupContainer(rect)
+                    var arrayModel = extraKeys.split(',')
                 }
             }
         }
@@ -70,10 +82,7 @@ Rectangle {
             anchors { left: container.left; right: container.right }
             spacing: container.spacing
 
-            Repeater {
-                model: dataModel.row1
-                delegate: keyDelegate
-            }
+            Repeater { model: dataModel.row1; delegate: keyDelegate }
             BackspaceKey { repeatOnHold: true; onPressed: remove() }
         }
 
@@ -84,10 +93,7 @@ Rectangle {
             anchors { leftMargin: height * 0.6 }
             spacing: container.spacing
 
-            Repeater {
-                model: dataModel.row2
-                delegate: keyDelegate
-            }
+            Repeater { model: dataModel.row2; delegate: keyDelegate }
             EnterKey { onPressed: insert("\x0D") }
         }
 
@@ -98,10 +104,7 @@ Rectangle {
             spacing: container.spacing
 
             ShiftKey { id: shift }
-            Repeater {
-                model: dataModel.row3
-                delegate: keyDelegate
-            }
+            Repeater { model: dataModel.row3; delegate: keyDelegate }
         }
 
         RowLayout {
