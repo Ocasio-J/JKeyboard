@@ -3,7 +3,7 @@ import QtQuick.Layouts 1.1
 
 Rectangle {
     id: key
-    property string key
+    property alias key : label.text
     property alias color: key.color
     property bool down: false
     property bool repeatOnHold: false
@@ -43,14 +43,13 @@ Rectangle {
 
     Text {
         id: label
-        anchors { fill: parent; }
+        anchors { fill: parent }
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
-        font { pixelSize: 30; bold: true }
+        font { pixelSize: 30; bold: false }
         fontSizeMode: Text.Fit
         minimumPixelSize: 1
         color: "white"
-        text: key.key
     }
 }
 

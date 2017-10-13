@@ -5,7 +5,12 @@ KeyboardKey {
     Layout.preferredWidth: height * 1.5
     Layout.fillWidth: true
     color: shiftActive ? "#4c4c4c" : capslock ? "green" : "#263138"
-    key: "SHIFT"
+
+    Image {
+        anchors { fill: parent }
+        fillMode: Image.PreserveAspectFit
+        source: "shift.svg"
+    }
 
     onPressed: {
         if (doubleClickTimer.running) {
