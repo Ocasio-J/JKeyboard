@@ -5,7 +5,7 @@ Rectangle {
     id: key
     property alias key : label.text
     property alias color: key.color
-    property bool down: false
+    property bool down: false // Rename to "pressed" ?
     property bool repeatOnHold: false
 
     signal pressed()
@@ -44,7 +44,8 @@ Rectangle {
         onReleased:  {
             key.down = false
 
-            if (contains(Qt.point(touchPoints[0].x, touchPoints[0].y))) {
+            var touchCoordinate = Qt.point(touchPoints[0].x, touchPoints[0].y)
+            if (keyMA.contains(touchCoordinate)) {
                 key.clicked()
             }
         }

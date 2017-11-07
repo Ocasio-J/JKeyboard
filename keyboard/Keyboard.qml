@@ -44,9 +44,15 @@ Rectangle {
 
     Component {
         id: keyDelegate
+
         KeyboardKey {
-            key: keyboard.showSecondaryKeys ? secondaryKey : shiftActive || capslock ? primaryKey : primaryKey.toLowerCase()
-            onPressed: { insert(key); shiftActive = false }
+            key: keyboard.showSecondaryKeys ? secondaryKey
+                                            : (shiftActive || capslock) ? primaryKey
+                                                                        : primaryKey.toLowerCase()
+            onPressed: {
+                insert(key)
+                shiftActive = false
+            }
         }
     }
 
@@ -104,7 +110,7 @@ Rectangle {
             anchors { left: container.left ; right: container.right }
             spacing: container.spacing
 
-            MoreKey { key: "123?"; onPressed: keyboard.showSecondaryKeys = !keyboard.showSecondaryKeys }           
+            MoreKey { key: keyboard.showSecondaryKeys ? "Abc" : "123?"; onPressed: keyboard.showSecondaryKeys = !keyboard.showSecondaryKeys }
             LanguageKey {  }
             KeyboardKey { key: " "; Layout.preferredWidth: container.width * 0.30; onPressed: insert(key) }
             KeyboardKey { key: "←"; repeatOnHold: true; onPressed: moveRight() }
