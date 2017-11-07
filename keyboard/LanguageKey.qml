@@ -5,10 +5,10 @@ KeyboardKey {
     color: "#263138"
 
     Image {
-        width: languageKey.width * 0.50
-        height: width
+        height: parent.height * 0.50
         anchors { centerIn: parent }
+        mipmap: true
         fillMode: Image.PreserveAspectFit
-        source: "language.svg"
+        source: "globe.svg"
     }
 }

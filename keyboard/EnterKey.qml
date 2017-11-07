@@ -8,9 +8,9 @@ KeyboardKey {
     color: down ? "#4c4c4c" : "#263138"
 
     Image {
-        width: enterKey.width * 0.50
         height: enterKey.height * 0.50
         anchors { centerIn: parent }
+        mipmap: true
         fillMode: Image.PreserveAspectFit
         source: "enter.svg"
     }

@@ -35,7 +35,7 @@ Window {
     }
 
     Keyboard {
-        width: parent.width
+        width: parent.width * 0.80
         y: activated ? parent.height - height : parent.height
     }
 }

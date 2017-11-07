@@ -9,11 +9,14 @@ Rectangle {
     property bool repeatOnHold: false
 
     signal pressed()
+    signal clicked()
 
+    Layout.fillWidth: true
+    Layout.fillHeight: true
     Layout.preferredHeight: parent.height
-    Layout.preferredWidth: height * 1.30
+    Layout.preferredWidth: height
     color: down ? "#4c4c4c" : "#1e1e1e"
-    radius: 5
+    radius: 2
 
     onDownChanged: {
         if (!down) {
@@ -35,10 +38,16 @@ Rectangle {
     MultiPointTouchArea {
         id: keyMA
         anchors { fill: parent }
-        mouseEnabled: false
+        mouseEnabled: true
         maximumTouchPoints: 1
         onPressed: { key.pressed(); key.down = true }
-        onReleased: key.down = false
+        onReleased:  {
+            key.down = false
+
+            if (contains(Qt.point(touchPoints[0].x, touchPoints[0].y))) {
+                key.clicked()
+            }
+        }
     }
 
     Text {
@@ -46,7 +55,7 @@ Rectangle {
         anchors { fill: parent }
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
-        font { pixelSize: 30; bold: false }
+        font { pixelSize: height * 0.50; bold: false }
         fontSizeMode: Text.Fit
         minimumPixelSize: 1
         color: "white"

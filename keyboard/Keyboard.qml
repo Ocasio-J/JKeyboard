@@ -39,6 +39,7 @@ Rectangle {
     anchors { horizontalCenter: parent.horizontalCenter }
 
     MouseArea { id: dummyMA; anchors.fill: parent }
+
     KeyboardDataModels { id: dataModel }
 
     Component {
@@ -52,7 +53,6 @@ Rectangle {
     Column {
         id: container
         anchors { fill: parent }
-        anchors { margins: 20 }
         spacing: height * 0.04
 
         RowLayout {
@@ -65,6 +65,7 @@ Rectangle {
                 model: dataModel.row1
                 delegate: keyDelegate
             }
+
             BackspaceKey { repeatOnHold: true; onPressed: remove() }
         }
 
@@ -72,13 +73,14 @@ Rectangle {
             id: row2
             height: container.height * 0.22
             anchors { left: container.left ; right: container.right }
-            anchors { leftMargin: height * 0.6 }
+            anchors { leftMargin: height * 0.5 }
             spacing: container.spacing
 
             Repeater {
                 model: dataModel.row2
                 delegate: keyDelegate
             }
+
             EnterKey { onPressed: insert("\x0D") }
         }
 
@@ -89,6 +91,7 @@ Rectangle {
             spacing: container.spacing
 
             ShiftKey { id: shift }
+
             Repeater {
                 model: dataModel.row3
                 delegate: keyDelegate
@@ -101,12 +104,12 @@ Rectangle {
             anchors { left: container.left ; right: container.right }
             spacing: container.spacing
 
-            MoreKey { key: "123?"; onPressed: keyboard.showSecondaryKeys = !keyboard.showSecondaryKeys }
-            //LanguageKey {  }
-            KeyboardKey { key: " "; Layout.fillWidth: true; onPressed: insert(key) }
+            MoreKey { key: "123?"; onPressed: keyboard.showSecondaryKeys = !keyboard.showSecondaryKeys }           
+            LanguageKey {  }
+            KeyboardKey { key: " "; Layout.preferredWidth: container.width * 0.30; onPressed: insert(key) }
             KeyboardKey { key: "←"; repeatOnHold: true; onPressed: moveRight() }
             KeyboardKey { key: "→"; repeatOnHold: true; onPressed: moveLeft() }
-            HideKeyboardKey { onPressed: hide() }
+            HideKeyboardKey { onClicked: hide() }
         }
     }
 }

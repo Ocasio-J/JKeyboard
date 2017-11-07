@@ -2,12 +2,14 @@ import QtQuick 2.4
 import QtQuick.Layouts 1.1
 
 KeyboardKey {
-    Layout.preferredWidth: height * 1.5
+    Layout.preferredWidth: height
     Layout.fillWidth: true
     color: shiftActive ? "#4c4c4c" : capslock ? "green" : "#263138"
 
     Image {
-        anchors { fill: parent }
+        height: parent.height * 0.50
+        anchors { centerIn: parent }
+        mipmap: true
         fillMode: Image.PreserveAspectFit
         source: "shift.svg"
     }

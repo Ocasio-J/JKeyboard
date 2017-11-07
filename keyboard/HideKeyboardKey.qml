@@ -5,9 +5,10 @@ KeyboardKey {
     color: down ? "#4c4c4c" : "#263138"
 
     Image {
-        width: hideKeyboardKey.width * 0.50
-        height: hideKeyboardKey.height * 0.50
+        height: parent.height * 0.60
         anchors { centerIn: parent }
+        mipmap: true
+        fillMode: Image.PreserveAspectFit
         source: "hide-keyboard.svg"
     }
 }
